@@ -18,10 +18,15 @@ from django.conf.urls.static import static, serve
 from django.contrib import admin
 from django.urls import path, re_path, include
 
+from rest_framework.routers import DefaultRouter
+
 import api.views
 
+router = DefaultRouter()
+router.register(r'planets', api.views.PlanetViewSet)
+
 urlpatterns = [
-    re_path(r'^api/v1/', api.views.index, name='index'),
+    re_path(r'^api/v1/', include(router.urls)),
     path('admin/', admin.site.urls),
     re_path(r'^(?P<path>.*)$', serve, { 'document_root': settings.FRONTEND_ROOT }),
 ]

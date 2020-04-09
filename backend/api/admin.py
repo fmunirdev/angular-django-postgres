@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from api.models import Planet
+
+
+class PlanetAdmin(admin.ModelAdmin):
+    list_display = ('planet_id', 'planet_name', 'home_star', 'mass', 'radius', 'distance')
+
+admin.site.register(Planet, PlanetAdmin)
