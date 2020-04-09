@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RestApiService } from '../rest-api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +6,7 @@ import { RestApiService } from '../rest-api.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  message: string;
+  constructor() {}
 
-  constructor(private restApiService: RestApiService) {}
-
-  ngOnInit(): void {
-    this.restApiService
-      .send('get')
-      .subscribe((res: any) => (this.message = res.body.message));
-  }
+  ngOnInit(): void {}
 }
